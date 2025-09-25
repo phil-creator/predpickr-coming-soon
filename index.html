@@ -3,20 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon</title>
+  <title>predpickr – Coming Soon</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: #ffffff;
       text-align: center;
-      padding: 100px;
-      background-color: #f0f0f0;
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    h1 { color: #333; }
-    p { color: #666; }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.5em;
+      margin-bottom: 2em;
+    }
+    .countdown {
+      font-size: 2em;
+      background: rgba(0,0,0,0.2);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
-  <h1>Coming Soon 🚀</h1>
-  <p>Unsere Webseite ist bald online. Bleib dran!</p>
+  <h1>predpickr 🚀</h1>
+  <p>Unser Package kommt bald! Bleib dran.</p>
+  <div class="countdown" id="countdown">Loading...</div>
+
+  <script>
+    // Countdown: setze hier das Release-Datum
+    const releaseDate = new Date("2025-12-15T12:00:00"); // Beispiel
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = releaseDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "Jetzt verfügbar!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>

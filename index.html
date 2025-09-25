@@ -1,84 +1,179 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>predpickr – Coming Soon</title>
-  <style>
-    /* Modern / Apple-like Styling */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>predpickr – Coming Soon</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
-    body {
-      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #f7f7f7, #eaeaea); /* sanfter Grau-Gradient */
-      color: #111111;
-      text-align: center;
-      padding: 100px 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+  /* Grundlayout */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    perspective: 1000px;
+    background: linear-gradient(180deg, #a8b89f, #7a6650); /* Grün-Braun Natur */
+  }
 
-    h1 {
-      font-size: 3em;
-      font-weight: 700;
-      margin-bottom: 0.5em;
-    }
+  /* Header */
+  header {
+    text-align: center;
+    color: #fff;
+    margin-top: 60px;
+    z-index: 10;
+    position: relative;
+  }
+  header h1 {
+    font-size: 4em;
+    margin: 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  }
+  header p {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-top: 10px;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+  }
 
-    p {
-      font-size: 1.5em;
-      font-weight: 300;
-      margin-bottom: 2em;
-      max-width: 600px;
-      line-height: 1.5;
-    }
+  /* Countdown */
+  .countdown {
+    font-size: 2em;
+    background: rgba(255,255,255,0.1);
+    padding: 20px 50px;
+    border-radius: 15px;
+    margin: 40px auto;
+    display: inline-block;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    color: #fff;
+  }
 
-    .countdown {
-      font-size: 2em;
-      background: rgba(0,0,0,0.05); /* sehr dezenter Schatten */
-      padding: 20px 40px;
-      border-radius: 12px;
-      margin-bottom: 2em;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      color: #111111;
-    }
+  /* Kontakt */
+  .contact {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  }
+  .contact a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact a:hover {
+    text-decoration: underline;
+  }
 
-    .contact {
-      font-size: 1em;
-      margin-top: 2em;
-    }
+  /* Feature-Boxen */
+  .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 50px 0;
+    gap: 30px;
+  }
+  .feature-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    width: 220px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .feature-box:hover {
+    transform: translateY(-10px) rotateY(10deg);
+    box-shadow: 0 0 40px rgba(255,255,255,0.4);
+  }
 
-    .contact a {
-      color: #007aff; /* dezenter Apple-Blau Akzent */
-      text-decoration: none;
-      font-weight: 500;
-    }
+  /* Animierte Drohnen */
+  .drone {
+    position: absolute;
+    width: 50px;
+    animation: fly 10s linear infinite;
+  }
+  @keyframes fly {
+    0% { transform: translateX(-100px) translateY(0) rotate(0deg); }
+    50% { transform: translateX(100vw) translateY(-50px) rotate(360deg); }
+    100% { transform: translateX(-100px) translateY(0) rotate(720deg); }
+  }
 
-    .contact a:hover {
-      text-decoration: underline;
-    }
+  /* Parallax Bäume */
+  .tree {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    opacity: 0.6;
+    animation: sway 5s ease-in-out infinite alternate;
+  }
+  @keyframes sway {
+    0% { transform: translateX(0px) rotate(-1deg); }
+    50% { transform: translateX(5px) rotate(1deg); }
+    100% { transform: translateX(0px) rotate(-1deg); }
+  }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2.5em; }
-      p { font-size: 1.2em; }
-      .countdown { font-size: 1.5em; padding: 15px 30px; }
-    }
-  </style>
+  /* Wolken */
+  .cloud {
+    position: absolute;
+    top: 50px;
+    width: 150px;
+    opacity: 0.3;
+    animation: cloudMove linear infinite;
+  }
+  @keyframes cloudMove {
+    0% { transform: translateX(-200px); }
+    100% { transform: translateX(100vw); }
+  }
+
+</style>
 </head>
 <body>
-  <h1>predpickr</h1>
-  <p>Unser Package wird bis Ende Oktober 2025 veröffentlicht! Bleib dran.</p>
 
+  <!-- Header -->
+  <header>
+    <h1>predpickr</h1>
+    <p>Unser Package wird bis Ende Oktober 2025 veröffentlicht!</p>
+  </header>
+
+  <!-- Countdown -->
   <div class="countdown" id="countdown">Loading...</div>
 
+  <!-- Feature-Boxen -->
+  <div class="features">
+    <div class="feature-box">
+      Variablenselektion<br>robust & transparent
+    </div>
+    <div class="feature-box">
+      Lineare & nichtlineare Beziehungen
+    </div>
+    <div class="feature-box">
+      Schutz wichtiger Features<br> & flexible Thresholds
+    </div>
+  </div>
+
+  <!-- Kontakt -->
   <div class="contact">
     Ansprechpartner: <a href="mailto:philipp.eisnecker@forst.bwl.de">Philipp Eisnecker</a>
   </div>
 
+  <!-- Drohnen SVG -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Drone_icon.svg" class="drone" style="top:100px; left:-100px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Drone_icon.svg" class="drone" style="top:200px; left:-200px; animation-duration:15s;">
+
+  <!-- Bäume SVG -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Tree_icon.svg" class="tree" style="left:50px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Tree_icon.svg" class="tree" style="left:200px; width:80px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Tree_icon.svg" class="tree" style="left:400px; width:120px;">
+
+  <!-- Wolken SVG -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Cloud_icon.svg" class="cloud" style="top:50px; animation-duration:60s;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Cloud_icon.svg" class="cloud" style="top:120px; animation-duration:80s;">
+
+  <!-- Countdown Script -->
   <script>
-    // Countdown bis Ende Oktober 2025
     const releaseDate = new Date("2025-10-31T23:59:59");
     const countdownEl = document.getElementById("countdown");
 

@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>predpickr – Coming Soon</title>
   <style>
+    /* Modern / Apple-like Styling */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
     body {
-      font-family: 'Arial', sans-serif;
-      /* sanfter Grün-Braun Gradient */
-      background: linear-gradient(135deg, #a8b89f, #7a6650);
-      color: #ffffff;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f7f7, #eaeaea); /* sanfter Grau-Gradient */
+      color: #111111;
       text-align: center;
       padding: 100px 20px;
       min-height: 100vh;
@@ -18,37 +20,57 @@
       justify-content: center;
       align-items: center;
     }
+
     h1 {
       font-size: 3em;
+      font-weight: 700;
       margin-bottom: 0.5em;
     }
+
     p {
       font-size: 1.5em;
-      margin-bottom: 1em;
+      font-weight: 300;
+      margin-bottom: 2em;
+      max-width: 600px;
+      line-height: 1.5;
     }
+
     .countdown {
       font-size: 2em;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.05); /* sehr dezenter Schatten */
       padding: 20px 40px;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 2em;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      color: #111111;
     }
+
     .contact {
       font-size: 1em;
       margin-top: 2em;
     }
+
     .contact a {
-      color: #ffd700;
+      color: #007aff; /* dezenter Apple-Blau Akzent */
       text-decoration: none;
+      font-weight: 500;
     }
+
     .contact a:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5em; }
+      p { font-size: 1.2em; }
+      .countdown { font-size: 1.5em; padding: 15px 30px; }
     }
   </style>
 </head>
 <body>
-  <h1>predpickr 🚀</h1>
+  <h1>predpickr</h1>
   <p>Unser Package wird bis Ende Oktober 2025 veröffentlicht! Bleib dran.</p>
+
   <div class="countdown" id="countdown">Loading...</div>
 
   <div class="contact">
@@ -56,7 +78,7 @@
   </div>
 
   <script>
-    // Countdown: Veröffentlichung bis Ende Oktober 2025
+    // Countdown bis Ende Oktober 2025
     const releaseDate = new Date("2025-10-31T23:59:59");
     const countdownEl = document.getElementById("countdown");
 
